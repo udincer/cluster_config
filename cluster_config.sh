@@ -32,3 +32,6 @@ echo "alias t='tmux attach'" >> ~/.bashrc
 # optional, install ucsc utils
 # not using this link might results in link errors to zlib
 # rsync -aP rsync://hgdownload.soe.ucsc.edu/genome/admin/exe/linux.x86_64.v369/ ~/ucsc_utils/
+
+# optional, install rust
+# curl https://sh.rustup.rs -sSf | sh
