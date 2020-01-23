@@ -41,7 +41,7 @@ echo "alias ....='cd ....'" >> ~/.bashrc
 curl https://sh.rustup.rs -sSf | sh
 
 cargo install exa
-echo "alias l='exa -l'" >> ~/.bashrc
+echo "alias l='exa -lhF --git'" >> ~/.bashrc
 
 cargo install fd-find
 cargo install ripgrep
