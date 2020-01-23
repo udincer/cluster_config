@@ -40,6 +40,10 @@ echo "alias ....='cd ....'" >> ~/.bashrc
 # install rust (interactive)
 curl https://sh.rustup.rs -sSf | sh
 
+# if installing on Windows Subsystem for Linux (WSL)
+# sudo apt-get update
+# sudo apt-get install build-essential
+
 cargo install exa
 echo "alias l='exa -lhF --git'" >> ~/.bashrc
 
