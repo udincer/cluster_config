@@ -9,7 +9,7 @@ conda install -y -c conda-forge tmux
 conda install -y numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib 
 conda install -y -c conda-forge jupyter_contrib_nbextensions parallel nbdime widgetsnbextension jupyterlab
 
-conda install -y -c bioconda bedops
+conda install -y -c bioconda bedops snakemake
 
 # set up jupyter
 jupyter notebook --generate-config
