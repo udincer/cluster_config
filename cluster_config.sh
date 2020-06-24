@@ -4,12 +4,20 @@
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
-conda install -y -c conda-forge tmux
+# mamba makes conda faster
+conda install -c conda-forge mamba
 
-conda install -y numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda
-conda install -y -c conda-forge jupyter_contrib_nbextensions parallel nbdime widgetsnbextension jupyterlab
+#conda install -y -c conda-forge tmux
+# this seems to be a cleaner install
+conda install tmux libevent -c conda-forge --no-deps
 
-conda install -y -c bioconda bedops snakemake
+mamba install -c conda-forge -c defaults -c bioconda numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda parallel nbdime widgetsnbextension jupyterlab bedops snakemake pybedtools bedtools htslib
+# Might also include this if it's not already installed: jupyter_contrib_nbextensions
+
+# conda install -y numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda
+# conda install -y -c conda-forge jupyter_contrib_nbextensions parallel nbdime widgetsnbextension jupyterlab
+
+# conda install -y -c bioconda bedops snakemake
 
 # set up jupyter
 jupyter notebook --generate-config
