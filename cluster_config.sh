@@ -19,7 +19,7 @@ pip install loguru
 # IDE tools for Jupyter
 pip install jupyter-lsp
 jupyter labextension install @krassowski/jupyterlab-lsp 
-mamba install -c conda-forge python-language-server
+pip install python-language-server
 
 # black code formatter
 jupyter labextension install @ryantam626/jupyterlab_code_formatter
@@ -29,6 +29,9 @@ mamba install black
 
 jupyter labextension install jupyterlab-execute-time
 # notebook settings {"recordTiming": true}
+
+pip install jupyterlab-quickopen
+jupyter labextension install @parente/jupyterlab-quickopen
 
 # set up jupyter
 jupyter notebook --generate-config
