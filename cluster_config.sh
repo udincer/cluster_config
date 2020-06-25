@@ -14,10 +14,21 @@ conda install tmux libevent -c conda-forge --no-deps
 mamba install -c conda-forge -c defaults -c bioconda numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda parallel nbdime widgetsnbextension jupyterlab bedops snakemake pybedtools bedtools htslib
 # Might also include this if it's not already installed: jupyter_contrib_nbextensions
 
-# conda install -y numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda
-# conda install -y -c conda-forge jupyter_contrib_nbextensions parallel nbdime widgetsnbextension jupyterlab
+pip install loguru
 
-# conda install -y -c bioconda bedops snakemake
+# IDE tools for Jupyter
+pip install jupyter-lsp
+jupyter labextension install @krassowski/jupyterlab-lsp 
+mamba install -c conda-forge python-language-server
+
+# black code formatter
+jupyter labextension install @ryantam626/jupyterlab_code_formatter
+pip install jupyterlab_code_formatter
+jupyter serverextension enable --py jupyterlab_code_formatter
+mamba install black
+
+jupyter labextension install jupyterlab-execute-time
+# notebook settings {"recordTiming": true}
 
 # set up jupyter
 jupyter notebook --generate-config
