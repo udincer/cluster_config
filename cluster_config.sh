@@ -11,7 +11,7 @@ conda install -c conda-forge mamba
 # this seems to be a cleaner install
 conda install tmux libevent -c conda-forge --no-deps
 
-mamba install -c conda-forge -c defaults -c bioconda numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda parallel nbdime widgetsnbextension jupyterlab bedops snakemake pybedtools bedtools htslib
+mamba install -c conda-forge -c defaults -c bioconda numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda parallel nbdime widgetsnbextension jupyterlab bedops snakemake pybedtools bedtools htslib pytables
 # Might also include this if it's not already installed: jupyter_contrib_nbextensions
 
 pip install loguru
