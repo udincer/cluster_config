@@ -77,3 +77,10 @@ wget https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.1-linux-x86_
 tar xzvf tmp/julia-1.4.1-linux-x86_64.tar.gz -C work/
 ln -s ~/work/julia-1.4.1-linux-x86_64/bin/julia  ~/bin/julia # symbolic link to ~/bin
 julia -e 'using Pkg; Pkg.add("IJulia")' # if doesn't work just run it in julia prompt
+
+# optional:
+# how to disable ctrl F behavior for codemirror regex search
+# comment out
+# "codemirror/addon/search/searchcursor",
+# "codemirror/addon/search/search",
+# In [env]/share/jupyter/nbextensions/select_keymap/main.js
