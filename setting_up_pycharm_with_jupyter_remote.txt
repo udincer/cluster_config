@@ -1,0 +1,7 @@
+Follow this: https://medium.com/analytics-vidhya/connecting-remote-server-via-pycharm-53414d0da93f
+
+Particularly the deployment -> mapping part.
+Run jupyter on same project structure. 
+Make sure to use git to avoid accidentally writing over. 
+
+Note: Deployment of conda environment part wouldn't work since Hoffman2 is on CentOS. 
