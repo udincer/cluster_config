@@ -11,7 +11,7 @@ conda install -c conda-forge mamba
 conda install tmux libevent -c conda-forge --no-deps
 
 # make seperate conda environments for base, jupyter, and kernel
-mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp jupyter-lsp-python nb_conda jupytext jupyterlab-code-snippets nbdime jupyterlab_execute_time
+mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp jupyter-lsp-python nb_conda_kernels jupytext jupyterlab-code-snippets nbdime jupyterlab_execute_time
 
 mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables
 conda activate tev
@@ -25,6 +25,11 @@ conda activate jupyter_base
 
 jupyter notebook --generate-config
 jupyter notebook password
+
+# installing papermill
+pip install papermill
+# follow instructions here to enable papermill to work with nb_conda_kernels
+# https://github.com/Anaconda-Platform/nb_conda_kernels#use-with-nbconvert-voila-papermill
 
 # this might be needed for tqdm_notebook
 jupyter nbextension install --user --py widgetsnbextension
