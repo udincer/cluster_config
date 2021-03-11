@@ -1,39 +1,28 @@
 ## setting up from scratch on the cluster
 
-# install conda
+# install miniconda
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
 # mamba makes conda faster
 conda install -c conda-forge mamba
 
-#conda install -y -c conda-forge tmux
-# this seems to be a cleaner install
+# tmux
 conda install tmux libevent -c conda-forge --no-deps
 
-mamba install -c conda-forge -c defaults -c bioconda numpy scipy pandas scikit-learn seaborn tqdm jupyter statsmodels yapf cython joblib nb_conda parallel nbdime widgetsnbextension jupyterlab bedops snakemake pybedtools bedtools htslib pytables
-# Might also include this if it's not already installed: jupyter_contrib_nbextensions
+# make seperate conda environments for base, jupyter, and kernel
+mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp jupyter-lsp-python nb_conda jupytext jupyterlab-code-snippets nbdime jupyterlab_execute_time
 
-pip install loguru
+mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables
+conda activate tev
+pip install loguru black jupyterlab_code_formatter
 
-# IDE tools for Jupyter
-pip install jupyter-lsp
-jupyter labextension install @krassowski/jupyterlab-lsp 
-pip install python-language-server
-
-# black code formatter
-jupyter labextension install @ryantam626/jupyterlab_code_formatter
-pip install jupyterlab_code_formatter
-jupyter serverextension enable --py jupyterlab_code_formatter
-mamba install black
-
-jupyter labextension install jupyterlab-execute-time
+# for jupyterlab_execute_time:
 # notebook settings {"recordTiming": true}
 
-pip install jupyterlab-quickopen
-jupyter labextension install @parente/jupyterlab-quickopen
-
 # set up jupyter
+conda activate jupyter_base
+
 jupyter notebook --generate-config
 jupyter notebook password
 
