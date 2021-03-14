@@ -38,7 +38,8 @@ FAV_NUMBER=24599
 
 mkdir ~/utils
 cat <<EOT >> ~/utils/start_jupyter.sh
-echo \$(hostname) > ~/.jupyter_hostname.txt; 
+echo \$(hostname) > ~/.jupyter_hostname.txt;
+conda activate jupyter_base;
 jupyter notebook --no-browser --port $FAV_NUMBER
 EOT
 
