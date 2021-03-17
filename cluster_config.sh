@@ -23,6 +23,7 @@ mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb
 # 6- watch out for pycharm deployment "file updated" warnings after editing ipynb
 # 7- set .jupytext.toml to default_jupytext_formats = "ipynb,_/py:percent"
 # 8- magics should be commented out for pycharm to not freak out
+# 9- only git-push on the server side, and only pull on pycharm side
 
 mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables
 conda activate tev
