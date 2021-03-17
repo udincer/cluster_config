@@ -14,6 +14,15 @@ conda install tmux libevent -c conda-forge --no-deps
 mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb_conda_kernels jupyterlab-code-snippets nbdime jupyterlab_execute_time jupytext
 
 # jupytext is dangerous! it could corrupt notebooks. be very careful with autosaves. 
+# jupytext rules for pycharm integration (with auto-deployment setting): 
+# 1- do not talk about jupytext
+# 2- DO NOT talk about jupytext
+# 3- do not open ipynb files in pycharm, it could autosave and overwrite the py
+# 4- do not open _py files in jupyter, for the same reason
+# 5- you must "reload notebook from disk" for _py -> ipynb
+# 6- watch out for pycharm deployment "file updated" warnings after editing ipynb
+# 7- set .jupytext.toml to default_jupytext_formats = "ipynb,_/py:percent"
+# 8- magics should be commented out for pycharm to not freak out
 
 mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables
 conda activate tev
