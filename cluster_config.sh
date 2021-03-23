@@ -83,6 +83,14 @@ echo "alias l='exa -lhF --git'" >> ~/.bashrc
 
 cargo install fd-find
 cargo install ripgrep
+cargo install du-dust
+
+# sed replacement
+cargo install sd
+
+# undoable rm
+cargo install rm-improved
+echo "alias rip='rip --graveyard /u/flashscratch/d/dincer/graveyard '" >> ~/.bashrc
 
 # install julia and ijulia (might want to change version)
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.4/julia-1.4.1-linux-x86_64.tar.gz -P tmp/
