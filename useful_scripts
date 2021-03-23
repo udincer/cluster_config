@@ -1,0 +1,3 @@
+# find number of files in the hidden folders in current directory
+# this is useful for finding directories that take up number of files quota on HPC
+parallel "echo -n {} ' ' ; find {} -type f | wc -l" ::: .[!.]*
