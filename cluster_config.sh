@@ -29,6 +29,9 @@ mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scip
 conda activate tev
 pip install loguru black jupyterlab_code_formatter
 
+# my version of snakeviz profiling visualization tool, works with remote setup
+pip install git+https://github.com/udincer/snakeviz.git
+
 # for jupyterlab_execute_time:
 # notebook settings {"recordTiming": true}
 
