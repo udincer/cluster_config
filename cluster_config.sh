@@ -25,7 +25,7 @@ mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb
 # 8- magics should be commented out for pycharm to not freak out
 # 9- only git-push on the server side, and only pull on pycharm side
 
-mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables
+mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets
 conda activate tev
 pip install loguru black jupyterlab_code_formatter
 
