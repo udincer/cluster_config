@@ -11,7 +11,7 @@ conda install -c conda-forge mamba
 conda install tmux libevent -c conda-forge --no-deps
 
 # make seperate conda environments for base, jupyter, and kernel
-mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb_conda_kernels nbdime jupyterlab_execute_time jupytext
+mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb_conda_kernels nbdime jupyterlab_execute_time jupytext ipywidgets
 
 # jupytext is dangerous! it could corrupt notebooks. be very careful with autosaves. 
 # jupytext rules for pycharm integration (with auto-deployment setting): 
