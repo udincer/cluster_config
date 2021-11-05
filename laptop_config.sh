@@ -1,5 +1,5 @@
 HOFF_USERNAME='' # change this
-FAV_NUMBER=0 # pick a number between 1024 and 65536
+FAV_NUMBER='24567' # pick a number between 1024 and 65536
 
 HOFF="${HOFF_USERNAME}@login2.hoffman2.idre.ucla.edu"
 
