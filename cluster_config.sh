@@ -27,7 +27,7 @@ mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb
 
 mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets
 conda activate tev
-pip install loguru black jupyterlab_code_formatter
+pip install loguru black isort jupyterlab_code_formatter
 
 # my version of snakeviz profiling visualization tool, works with remote setup
 pip install git+https://github.com/udincer/snakeviz.git
@@ -40,6 +40,10 @@ conda activate jupyter_base
 
 jupyter notebook --generate-config
 jupyter notebook password
+
+# set default figure format for retina display (png2x)
+ipython profile create
+echo "c.InlineBackend.figure_format = 'retina'" >> ~/.ipython/profile_default/ipython_kernel_config.py
 
 # this is a more performant fork of pyls, future you might want to check the latest version
 pip install git+https://github.com/krassowski/python-language-server.git@main
