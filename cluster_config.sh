@@ -32,6 +32,9 @@ pip install loguru black isort jupyterlab_code_formatter
 # my version of snakeviz profiling visualization tool, works with remote setup
 pip install git+https://github.com/udincer/snakeviz.git
 
+# my version of tuna profiling visualization tool, works with remote setup
+pip install git+https://github.com/udincer/tuna.git
+
 # for jupyterlab_execute_time:
 # notebook settings {"recordTiming": true}
 
