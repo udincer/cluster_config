@@ -75,6 +75,9 @@ echo "alias ..='cd ..'" >> ~/.bashrc
 echo "alias ...='cd ...'" >> ~/.bashrc
 echo "alias ....='cd ....'" >> ~/.bashrc
 
+# adds capability to start a remote vscode session directly from terminal
+echo "alias code='echo \"code --folder-uri vscode-remote://ssh-remote+login4/\$PWD\"'" >> ~/.bashrc
+
 # optional, install ucsc utils
 # not using this link might results in link errors to zlib
 # rsync -aP rsync://hgdownload.soe.ucsc.edu/genome/admin/exe/linux.x86_64.v369/ ~/ucsc_utils/
