@@ -11,6 +11,7 @@ WORKSPACE_DIR="$HOME/work/workspace_singularity"
 # IMAGE_DIR should be in SCRATCH directory to take full advantage of speedup
 mkdir -p ${IMAGE_DIR} ${WORKSPACE_DIR}
 
+wget -P ${WORKSPACE_DIR}/ https://raw.githubusercontent.com/udincer/cluster_config/master/singularity/workspace_config_files/.bashrc
 # code formatter black complains if this directory doesn't exist
 mkdir -p ${WORKSPACE_DIR}/.cache/black/22.3.0
 
@@ -33,7 +34,7 @@ singularity exec \
     "${IMAGE_DIR}/jb_mamba" \
     bash
 ```
-Should run `jupyter lab password` inside the container to set notebook access password at this point. Also run `conda init`. `$WORKSPACE_DIR` will have its own .bashrc that you can modify inside or outside the container. 
+Should run `jupyter lab password` inside the container to set notebook access password at this point. `$WORKSPACE_DIR` will have its own .bashrc that you can modify inside or outside the container. 
 
 Step 3: Run Jupyter in new environment.
 ```bash
@@ -46,7 +47,7 @@ singularity exec \
     --bind /tmp:/tmp \
     --containall \
     "${IMAGE_DIR}/jb_mamba" \
-    bash -c "source activate jb2 && jupyter lab --port 8897 --ServerApp.token=token123"
+    bash -c "jupyter lab --port 8897 --ServerApp.token=token123"
 ```
 
 Consider putting this command in a script or bash alias for quick access. 

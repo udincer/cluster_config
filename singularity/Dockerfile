@@ -20,6 +20,8 @@ RUN conda init bash && \
     pip install loguru black isort statannotations
 
 # the following language server works fine but messes up path autocomplete by truncating
-# RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp jupyter-lsp-python
+# try setting %config Completer.use_jedi = False
+RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server
+RUN jupyter labextension install jupyterlab-tailwind-theme
 
 WORKDIR "${HOME}"
