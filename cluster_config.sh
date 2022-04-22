@@ -44,9 +44,11 @@ conda activate jupyter_base
 jupyter notebook --generate-config
 jupyter notebook password
 
-# set default figure format for retina display (png2x)
 ipython profile create
+# set default figure format for retina display (png2x)
 echo "c.InlineBackend.figure_format = 'retina'" >> ~/.ipython/profile_default/ipython_kernel_config.py
+# turn of jedi autocompleter which spits out bad suggestions
+echo "c.Completer.use_jedi = False" >> ~/.ipython/profile_default/ipython_kernel_config.py
 
 # this is a more performant fork of pyls, future you might want to check the latest version
 pip install git+https://github.com/krassowski/python-language-server.git@main
