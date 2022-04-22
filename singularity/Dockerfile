@@ -21,7 +21,10 @@ RUN conda init bash && \
 
 # the following language server works fine but messes up path autocomplete by truncating
 # try setting %config Completer.use_jedi = False
-RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server
+RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server nodejs
 RUN jupyter labextension install jupyterlab-tailwind-theme
+RUN cd /usr/local/bin && \
+    curl https://zyedidia.github.io/eget.sh | bash && \
+    ./eget zyedidia/micro -a static
 
 WORKDIR "${HOME}"
