@@ -11,7 +11,7 @@ RUN mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdi
     pip install loguru black isort && \
     mamba clean --all  --yes
 
-RUN mamba create -n tev -c conda-forge -c defaults -c bioconda --yes python=3.8 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake samtools=1.15 pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue graphviz ipycytoscape fastparquet murmurhash sqlalchemy cytoolz bokeh distributed && \
+RUN mamba create -n tev -c conda-forge -c defaults -c bioconda --yes python=3.8 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake samtools=1.15 pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed && \
     mamba install -n tev -c conda-forge -c bioconda --yes pybigwig && \
     mamba clean --all  --yes
 
