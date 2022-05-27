@@ -1,0 +1,7 @@
+{
+    "codeCellConfig": {
+        "rulers": [80, 100],
+        "autoClosingBrackets": true
+    },
+    "recordTiming": true
+}

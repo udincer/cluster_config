@@ -1,0 +1,6 @@
+{
+    "editorConfig": {
+        "rulers": [80, 100],
+        "lineWrap": "off"
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "shortcuts": [
+    {
+      "command": "notebook:hide-cell-outputs",
+      "keys": [
+        "O"
+      ],
+      "selector": ".jp-Notebook:focus"
+    },    
+    {
+      "command": "notebook:show-cell-outputs",
+      "keys": [
+        "Shift O"
+      ],
+      "selector": ".jp-Notebook:focus"
+    },
+    {
+        "command": "apputils:activate-command-palette",
+        "keys": [
+            "Accel Shift P"
+        ],
+        "selector": "body"
+    },
+    {
+        "command": "docmanager:rename",
+        "keys": [
+            "R", 
+            "R"
+        ],
+        "selector": ".jp-Notebook:focus"
+    }
+  ]
+}
