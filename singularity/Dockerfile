@@ -7,7 +7,7 @@ SHELL ["/bin/bash", "--login", "-c"]
 
 RUN apt-get update; apt-get install -y build-essential less nano vim curl git sudo ripgrep fd-find
 
-RUN mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa && \
+RUN mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync && \
     pip install loguru black isort && \
     mamba clean --all  --yes
 
@@ -21,10 +21,17 @@ RUN conda init bash && \
 
 # the following language server works fine but messes up path autocomplete by truncating
 # try setting %config Completer.use_jedi = False
-RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server nodejs
+RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server nodejs && \
+    mamba clean --all  --yes
+
 RUN jupyter labextension install jupyterlab-tailwind-theme
+
 RUN cd /usr/local/bin && \
     curl https://zyedidia.github.io/eget.sh | bash && \
     ./eget zyedidia/micro -a static
+
+# make /bin/sh symlink to bash instead of dash:
+RUN echo "dash dash/sh boolean false" | debconf-set-selections
+RUN DEBIAN_FRONTEND=noninteractive dpkg-reconfigure dash
 
 WORKDIR "${HOME}"
