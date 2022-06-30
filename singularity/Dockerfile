@@ -21,6 +21,7 @@ RUN conda init bash && \
 
 # the following language server works fine but messes up path autocomplete by truncating
 # try setting %config Completer.use_jedi = False
+# also unset lsp-completer-max-label-width in the browser
 RUN mamba install -n base -c conda-forge --yes jupyterlab-lsp python-lsp-server nodejs && \
     mamba clean --all  --yes
 
