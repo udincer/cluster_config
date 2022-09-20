@@ -35,3 +35,6 @@ unset __conda_setup
 
 # add qstat, qsub, etc.
 export PATH="$PATH:/u/systems/UGE8.6.4/bin/lx-amd64"
+
+# linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
