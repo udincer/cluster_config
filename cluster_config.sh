@@ -111,6 +111,14 @@ tar xzvf tmp/julia-1.4.1-linux-x86_64.tar.gz -C work/
 ln -s ~/work/julia-1.4.1-linux-x86_64/bin/julia  ~/bin/julia # symbolic link to ~/bin
 julia -e 'using Pkg; Pkg.add("IJulia")' # if doesn't work just run it in julia prompt
 
+# linuxbrew
+# export HOMEBREW_GIT_PATH=/u/home/d/dincer/work/miniconda3/bin/git
+# export HOMEBREW_CURL_PATH=/u/home/d/dincer/work/miniconda3/bin/curl
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install zstd --ignore-dependencies
+brew install gcc
+
 # optional:
 # how to disable ctrl F behavior for codemirror regex search
 # comment out
