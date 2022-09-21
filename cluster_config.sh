@@ -1,18 +1,22 @@
 ## setting up from scratch on the cluster
 
-# install miniconda
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-
-# mamba makes conda faster
-conda install -c conda-forge mamba
+# install miniconda + mamba
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh
 
 # tmux
 conda install tmux libevent -c conda-forge --no-deps
 
-# make seperate conda environments for base, jupyter, and kernel
-mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb_conda_kernels nbdime jupyterlab_execute_time jupytext ipywidgets
+mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs
+pip install loguru black isort
 
+mamba create -n tev -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig
+mamba clean --all
+
+mamba activate tev
+pip install loguru black isort statannotations
+
+## jupytext notes
 # jupytext is dangerous! it could corrupt notebooks. be very careful with autosaves. 
 # jupytext rules for pycharm integration (with auto-deployment setting): 
 # 1- do not talk about jupytext
@@ -25,10 +29,6 @@ mamba create -n jupyter_base -c conda-forge python=3.8 jupyterlab jupyter-lsp nb
 # 8- magics should be commented out for pycharm to not freak out
 # 9- only git-push on the server side, and only pull on pycharm side
 
-mamba create -n tev -c conda-forge -c defaults -c bioconda python=3.8 numpy scipy pandas scikit-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets
-conda activate tev
-pip install loguru black isort jupyterlab_code_formatter
-
 # my version of snakeviz profiling visualization tool, works with remote setup
 pip install git+https://github.com/udincer/snakeviz.git
 
@@ -39,7 +39,7 @@ pip install git+https://github.com/udincer/tuna.git
 # notebook settings {"recordTiming": true}
 
 # set up jupyter
-conda activate jupyter_base
+mamba deactivate
 
 jupyter notebook --generate-config
 jupyter notebook password
@@ -92,7 +92,7 @@ curl https://sh.rustup.rs -sSf | sh
 # sudo apt-get install build-essential
 
 cargo install exa
-echo "alias l='exa -lhF --git'" >> ~/.bashrc
+echo "alias l='exa -lhF'" >> ~/.bashrc
 
 cargo install fd-find
 cargo install ripgrep
