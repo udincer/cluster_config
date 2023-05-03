@@ -4,8 +4,8 @@
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
 bash Mambaforge-Linux-x86_64.sh
 
-# tmux
-conda install tmux libevent -c conda-forge --no-deps
+# tmux (might be better to install through linuxbrew)
+# conda install tmux libevent -c conda-forge --no-deps
 
 mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs
 pip install loguru black isort
@@ -15,19 +15,6 @@ mamba clean --all
 
 mamba activate tev
 pip install loguru black isort statannotations
-
-## jupytext notes
-# jupytext is dangerous! it could corrupt notebooks. be very careful with autosaves. 
-# jupytext rules for pycharm integration (with auto-deployment setting): 
-# 1- do not talk about jupytext
-# 2- DO NOT talk about jupytext
-# 3- do not open ipynb files in pycharm, it could autosave and overwrite the py
-# 4- do not open _py files in jupyter, for the same reason
-# 5- you must "reload notebook from disk" for _py -> ipynb
-# 6- watch out for pycharm deployment "file updated" warnings after editing ipynb
-# 7- set .jupytext.toml to default_jupytext_formats = "ipynb,_/py:percent"
-# 8- magics should be commented out for pycharm to not freak out
-# 9- only git-push on the server side, and only pull on pycharm side
 
 # my version of snakeviz profiling visualization tool, works with remote setup
 pip install git+https://github.com/udincer/snakeviz.git
@@ -50,16 +37,13 @@ echo "c.InlineBackend.figure_format = 'retina'" >> ~/.ipython/profile_default/ip
 # turn of jedi autocompleter which spits out bad suggestions
 echo "c.Completer.use_jedi = False" >> ~/.ipython/profile_default/ipython_kernel_config.py
 
-# this is a more performant fork of pyls, future you might want to check the latest version
-pip install git+https://github.com/krassowski/python-language-server.git@main
-
-pip install papermill
-pip install jupyterlab-code-snippets
+# pip install papermill
+# pip install jupyterlab-code-snippets
 # follow instructions here to enable papermill to work with nb_conda_kernels
 # https://github.com/Anaconda-Platform/nb_conda_kernels#use-with-nbconvert-voila-papermill
 
 # this might be needed for tqdm_notebook
-jupyter nbextension install --user --py widgetsnbextension
+# jupyter nbextension install --user --py widgetsnbextension
 
 FAV_NUMBER=24599
 
@@ -78,7 +62,16 @@ echo "alias ...='cd ...'" >> ~/.bashrc
 echo "alias ....='cd ....'" >> ~/.bashrc
 
 # adds capability to start a remote vscode session directly from terminal
-echo "alias code='echo \"code --folder-uri vscode-remote://ssh-remote+login4/\$PWD\"'" >> ~/.bashrc
+cat << 'EOT' >> ~/.bashrc
+# open file/folder in vscode
+code() {
+  if [ -z "$1" ]; then
+    echo "code --remote ssh-remote+$HOSTNAME $(pwd)"
+  else
+    echo "code --remote ssh-remote+$HOSTNAME $(realpath $1)"
+  fi
+}
+EOT
 
 # optional, install ucsc utils
 # not using this link might results in link errors to zlib
