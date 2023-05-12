@@ -7,14 +7,12 @@ bash Mambaforge-Linux-x86_64.sh
 # tmux (might be better to install through linuxbrew)
 # conda install tmux libevent -c conda-forge --no-deps
 
-mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs
-pip install loguru black isort
+mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort
 
-mamba create -n tev -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig
+mamba create -n tev -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort statannotations
 mamba clean --all
 
 mamba activate tev
-pip install loguru black isort statannotations
 
 # my version of snakeviz profiling visualization tool, works with remote setup
 pip install git+https://github.com/udincer/snakeviz.git
