@@ -1,3 +1,8 @@
+# find paths: jupyter --paths
+
+# this should work as a one liner
+rg -F "lsp-completer-max-label-width" --files-with-matches | xargs -I{} sed -i -E 's/(lsp-completer-max-label-width: )[0-9]+(px)/\11200\2/g' {}
+
 # to get files: rg -F lsp-completer-max-label-width --files-with-matches
 
 sed -i 's/lsp-completer-max-label-width:\ 300px/lsp-completer-max-label-width:\ 1200px/' share/jupyter/labextensions/@krassowski/jupyterlab-lsp/static/501.bc0329be89ee2a4fe618.js
