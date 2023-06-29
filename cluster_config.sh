@@ -9,6 +9,9 @@ bash Mambaforge-Linux-x86_64.sh
 
 mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort
 
+# alternative to base
+mamba create -n b3 -c conda-forge python=3.10 nb_conda_kernels nbdime ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort ruff python-lsp-ruff "jupyterlab_execute_time<3"
+
 mamba create -n tev -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort statannotations
 mamba clean --all
 
