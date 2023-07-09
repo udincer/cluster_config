@@ -20,19 +20,25 @@ RUN NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.co
 # the language server (jupyterlab-lsp) works fine but messes up path autocomplete by truncating
 # try setting %config Completer.use_jedi = False
 # also unset lsp-completer-max-label-width in the browser
-RUN mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs && \
-    pip install loguru black isort && \
+
+# RUN mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs && \
+#     pip install loguru black isort && \
+#     mamba clean --all  --yes
+
+RUN mamba create -n b3 -c conda-forge python=3.10 nb_conda_kernels nbdime ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort ruff python-lsp-ruff "jupyterlab_execute_time<3" && \
     mamba clean --all  --yes
 
-RUN mamba create -n tev -c conda-forge -c defaults -c bioconda --yes python=3.8 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake samtools=1.15 pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed && \
-    mamba install -n tev -c conda-forge -c bioconda --yes pybigwig && \
-    mamba clean --all  --yes
+RUN mamba create -n tev_old_pandas -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy "pandas<2" scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort statannotations
 
-RUN conda init bash && \
-    source activate tev && \
-    pip install loguru black isort statannotations
+# RUN mamba create -n tev -c conda-forge -c defaults -c bioconda --yes python=3.8 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake samtools=1.15 pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed && \
+#     mamba install -n tev -c conda-forge -c bioconda --yes pybigwig && \
+#     mamba clean --all  --yes
 
-RUN jupyter labextension install jupyterlab-tailwind-theme
+# RUN conda init bash && \
+#     source activate tev && \
+#     pip install loguru black isort statannotations
+
+# RUN jupyter labextension install jupyterlab-tailwind-theme
 
 RUN useradd --shell /bin/bash dev
 USER dev
