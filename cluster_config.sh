@@ -2,7 +2,14 @@
 
 # install miniconda + mamba
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-bash Mambaforge-Linux-x86_64.sh
+# bash Mambaforge-Linux-x86_64.sh
+
+# for installing to scratch
+rip "/u/home/d/dincer/scratch/mambaforge"
+bash Mambaforge-Linux-x86_64.sh -p "/u/home/d/dincer/scratch/mambaforge"
+
+# optional - if conda init is not run
+# eval "$(/u/home/d/dincer/scratch/mambaforge/bin/conda shell.bash hook)" 
 
 # tmux (might be better to install through linuxbrew)
 # conda install tmux libevent -c conda-forge --no-deps
@@ -10,7 +17,19 @@ bash Mambaforge-Linux-x86_64.sh
 mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort
 
 # alternative to base
-mamba create -n b3 -c conda-forge python=3.10 nb_conda_kernels nbdime ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort ruff python-lsp-ruff "jupyterlab_execute_time<3"
+mamba create -n b1 -c conda-forge python=3.10 nb_conda_kernels nbdime ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort ruff python-lsp-ruff "jupyterlab_execute_time<3"
+mamba create -n tev_old_pandas -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy "pandas<2" "seaborn>=0.12" scikit-learn umap-learn  tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort
+
+conda activate b1
+pip install -e "/u/home/d/dincer/work/psub"
+
+conda activate tev_old_pandas
+pip install -e "/u/home/d/dincer/work/psub"
+pip install -e "/u/home/d/dincer/toasted_almonds"
+
+
+mamba clean --all
+
 
 mamba create -n tev -c conda-forge -c defaults -c bioconda --strict-channel-priority python=3.10 numpy scipy pandas scikit-learn umap-learn seaborn tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension bedops snakemake pybedtools bedtools htslib pytables ipywidgets exa bat dask dask-jobqueue python-graphviz fastparquet murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort statannotations
 mamba clean --all
