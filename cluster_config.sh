@@ -1,18 +1,25 @@
 ## setting up from scratch on the cluster
 
 # install miniconda + mamba
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
-# bash Mambaforge-Linux-x86_64.sh
+# wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh
+# bash Miniforge-Linux-x86_64.sh
 
 # for installing to scratch
 rip "/u/home/d/dincer/scratch/mambaforge"
-bash Mambaforge-Linux-x86_64.sh -p "/u/home/d/dincer/scratch/mambaforge"
+bash Miniforge3-Linux-x86_64.sh -p "/u/home/d/dincer/miniforge"
 
 # optional - if conda init is not run
 # eval "$(/u/home/d/dincer/scratch/mambaforge/bin/conda shell.bash hook)" 
 
 # tmux (might be better to install through linuxbrew)
 # conda install tmux libevent -c conda-forge --no-deps
+
+# micromamba stuff
+"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+micromamba create -n b1 -c conda-forge python=3.12 jupyterlab ipywidgets jupyterlab_code_formatter git rsync bat jupyterlab-lsp python-lsp-server nodejs black isort ruff python-lsp-ruff jupyterlab_execute_time
+micromamba create -n tev01 -c conda-forge -c bioconda python=3.12 numpy scipy "pandas>2.1" polars scikit-learn umap-learn "seaborn>0.13" tqdm statsmodels yapf cython joblib parallel nbdime widgetsnbextension snakemake pybedtools bedtools htslib pytables eza bat python-graphviz murmurhash sqlalchemy cytoolz bokeh distributed samtools pysam pybigwig loguru black isort ipykernel ipywidgets
+
 
 mamba install -n base -c conda-forge --yes python=3.10 nb_conda_kernels nbdime jupyterlab_execute_time ipywidgets jupyterlab_code_formatter git exa rsync bat jupyterlab-lsp python-lsp-server nodejs loguru black isort
 
